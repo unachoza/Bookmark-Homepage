@@ -42,3 +42,24 @@ const buildBookmarks = () => {
     bookmarksContainer.appendChild(item);
   });
 };
+
+const fetchBookmarks = () => {
+  if (localStorage.getItem('bookmarks')) {
+    bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
+  } else {
+    bookmarks = [
+      {
+        name: 'Choza Portfolio',
+        url: 'www.updatedarianna.surge.sh',
+      },
+    ];
+    localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+  }
+  buildBookmarks();
+};
+
+// Event Listener
+// bookmarkForm.addEventListener('submit', storeBookmark);
+
+// On Load, Fetch Bookmarks
+fetchBookmarks();
