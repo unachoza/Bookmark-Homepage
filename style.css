@@ -13,6 +13,8 @@ body {
   background: var(--primary-color);
   background-image: url('https://res.cloudinary.com/dh41vh9dx/image/upload/v1597017723/lightcloudssmaller.jpg');
   background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
   background-size: cover;
   font-family: Karla, sans-serif;
   margin-top: 80px;

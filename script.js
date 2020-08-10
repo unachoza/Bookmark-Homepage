@@ -14,7 +14,10 @@ const showModal = () => {
 };
 // Modal Event Listeners
 modalShow.addEventListener('click', showModal);
-modalClose.addEventListener('click', () => modal.classList.remove('show-modal'));
+modalClose.addEventListener('click', () => {
+  console.log('clicked');
+  modal.classList.remove('show-modal');
+});
 window.addEventListener('click', (e) => (e.target === modal ? modal.classList.remove('show-modal') : false));
 
 // Validate Form
@@ -57,7 +60,17 @@ const buildBookmarks = () => {
     bookmarksContainer.appendChild(item);
   });
 };
+// Delete Bookmark
+const deleteBookmark = (url) => {
+  console.log('wporkind');
+  bookmarks.forEach((bookmark, i) => {
+    if (bookmark.url === url) bookmarks.splice(i, 1);
+  });
 
+  // Update bookmarks array in localStorage, re-populate DOM
+  localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+  fetchBookmarks();
+};
 const fetchBookmarks = () => {
   if (localStorage.getItem('bookmarks')) {
     bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
